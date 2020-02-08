@@ -44,6 +44,7 @@ require_once "assets/BackEnd/DBConn.php";
                 </div>
                 <div class="card-body">
                     <form method="POST" action="">
+                    <input class="" type="text" name="id" style="display: none">
                         <div class="form-row">
                             <div class="name">Title</div>
                             <div class="value">
