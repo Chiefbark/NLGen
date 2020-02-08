@@ -1,3 +1,8 @@
+<?php
+
+require_once "assets/BackEnd/DBConn.php";
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
