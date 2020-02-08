@@ -19,7 +19,7 @@ class DBConn
      */
     public static function getConnection()
     {
-        $conn = new MongoDB\Driver\Manager("mongodb+srv://admin:admin@cluster0-by8no.mongodb.net/test?retryWrites=true&w=majority");
+        $conn = new MongoDB\Client("mongodb+srv://admin:admin@cluster0-by8no.mongodb.net/test?retryWrites=true&w=majority");
         return $conn;
     }
 }

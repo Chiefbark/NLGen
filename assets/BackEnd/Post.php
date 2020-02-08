@@ -25,10 +25,20 @@ class Post{
         $this->content = $content;
     }
 
+
+
+    public static function insert($post){
+        return DAOPost::getInstance()->insert($post);
+    }
+
+
+
     public function setAuthor($author)
     {
         $this->author = $author;
     }
+
+
 
     /**
      * @return string

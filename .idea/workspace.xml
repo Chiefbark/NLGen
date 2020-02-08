@@ -2,14 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7bfa0638-0f3c-4579-9236-c47901311173" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/NLGen.iml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/encodings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/scopes/scope_settings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/BackEnd/DAOPost.php" afterPath="$PROJECT_DIR$/assets/BackEnd/DAOPost.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/BackEnd/DBConn.php" afterPath="$PROJECT_DIR$/assets/BackEnd/DBConn.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/BackEnd/Post.php" afterPath="$PROJECT_DIR$/assets/BackEnd/Post.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/form.php" afterPath="$PROJECT_DIR$/form.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="NLGen.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -31,17 +28,52 @@
     <favorites_list name="NLGen" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="Post.php" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/assets/BackEnd/Post.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="24" column="34" selection-start="595" selection-end="595" vertical-scroll-proportion="0.42673796" vertical-offset="57" max-vertical-offset="2166">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <splitter split-orientation="horizontal" split-proportion="0.5">
+      <split-first>
+        <leaf>
+          <file leaf-file-name="DBConn.php" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/assets/BackEnd/DBConn.php">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="14" column="5" selection-start="305" selection-end="305" vertical-scroll-proportion="-9.5" vertical-offset="0" max-vertical-offset="570">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="Post.php" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/assets/BackEnd/Post.php">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="2" column="11" selection-start="18" selection-end="18" vertical-scroll-proportion="-1.3571428" vertical-offset="0" max-vertical-offset="2356">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="form.php" pinned="false" current="true" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/form.php">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="5" column="15" selection-start="147" selection-end="147" vertical-scroll-proportion="0.101604275" vertical-offset="0" max-vertical-offset="2071">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-first>
+      <split-second>
+        <leaf>
+          <file leaf-file-name="DAOPost.php" pinned="false" current="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/assets/BackEnd/DAOPost.php">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="24" column="0" selection-start="449" selection-end="449" vertical-scroll-proportion="0.49457702" vertical-offset="0" max-vertical-offset="1672">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-second>
+    </splitter>
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -55,6 +87,9 @@
     <option name="changedFiles">
       <list>
         <option value="$PROJECT_DIR$/assets/BackEnd/Post.php" />
+        <option value="$PROJECT_DIR$/assets/BackEnd/DBConn.php" />
+        <option value="$PROJECT_DIR$/assets/BackEnd/DAOPost.php" />
+        <option value="$PROJECT_DIR$/form.php" />
       </list>
     </option>
   </component>
@@ -188,7 +223,7 @@
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24979983" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.11329063" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
@@ -219,9 +254,37 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="963">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/BackEnd/DBConn.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="5" selection-start="305" selection-end="305" vertical-scroll-proportion="-9.5" vertical-offset="0" max-vertical-offset="570">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/BackEnd/DAOPost.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="24" column="0" selection-start="449" selection-end="449" vertical-scroll-proportion="0.49457702" vertical-offset="0" max-vertical-offset="1672">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/assets/BackEnd/Post.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="34" selection-start="595" selection-end="595" vertical-scroll-proportion="0.42673796" vertical-offset="57" max-vertical-offset="2166">
+        <state line="2" column="11" selection-start="18" selection-end="18" vertical-scroll-proportion="-1.3571428" vertical-offset="0" max-vertical-offset="2356">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/form.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="15" selection-start="147" selection-end="147" vertical-scroll-proportion="0.101604275" vertical-offset="0" max-vertical-offset="2071">
           <folding />
         </state>
       </provider>

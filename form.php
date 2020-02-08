@@ -1,6 +1,16 @@
 <?php
 
 require_once "assets/BackEnd/DBConn.php";
+require_once "assets/BackEnd/Post.php";
+require_once "assets/BackEnd/DAOPost.php";
+echo phpinfo();
+$post = new Post();
+
+if (isset($_POST) && !empty($_POST)) {
+        $post->fill($_POST['title'], $_POST['author'], $_FILES['photo'], $_POST['content']);
+        Post::insert($post);
+}
+
 
 ?>
 <!DOCTYPE html>
@@ -43,7 +53,9 @@ require_once "assets/BackEnd/DBConn.php";
                     <h2 class="title">New Post</h2>
                 </div>
                 <div class="card-body">
-                    <form method="POST" action="">
+
+
+                    <form method="POST" action="form.php">
                     <input class="" type="text" name="id" style="display: none">
                         <div class="form-row">
                             <div class="name">Title</div>
@@ -77,11 +89,12 @@ require_once "assets/BackEnd/DBConn.php";
                                 </div>
                             </div>
                         </div>
+                        <div class="card-footer">
+                            <button class="btn btn--radius-2 btn--blue-2" type="submit">Submit</button>
+                        </div>
                     </form>
                 </div>
-                <div class="card-footer">
-                    <button class="btn btn--radius-2 btn--blue-2" type="submit">Submit</button>
-                </div>
+
             </div>
         </div>
     </div>
