@@ -9,5 +9,6 @@ body {
 }
 
 body {
-  padding-top: 56px;
+  padding-top   : calc(56px + 20px);
+  padding-bottom: calc(120px + 20px);
 }
