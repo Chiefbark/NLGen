@@ -7,8 +7,7 @@ require_once "assets/BackEnd/DBConn.php";
 require_once "assets/BackEnd/Post.php";
 require_once "assets/BackEnd/DAOPost.php";
 
-$list = PostList::select()->getList();
-
+$list = PostList::select();
 
 ?>
 <!DOCTYPE html>
@@ -16,11 +15,22 @@ $list = PostList::select()->getList();
 
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Home | NLGen</title>
+
+    <script>
+        function filterPosts() {
+            var value = document.getElementById('search-field').value.toLowerCase();
+            var items = document.querySelectorAll('.card');
+            for (var item of items)
+                item.classList.remove('hidden');
+
+            var items = document.querySelectorAll('.card:not([title*="' + value + '"])');
+            if (value && items)
+                for (var item of items)
+                    item.classList.add('hidden');
+        }
+    </script>
 
     <link href="assets/css/bootstrap.min.css" rel="stylesheet">
     <link href="assets/css/styles.css" rel="stylesheet">
@@ -50,7 +60,22 @@ $list = PostList::select()->getList();
     </nav>
 
     <div class="container flex-grow">
-
+        <div class="row">
+            <h3 class="col-md-8">Browse over all our posts</h3>
+            <div class="input-group mb-3 col-md-4">
+                <input type="text" class="form-control" id="search-field" placeholder="Search..." aria-label="name" onkeyup="filterPosts()">
+                <div class="input-group-append">
+                    <span class="input-group-text">
+                        <span id="search-icon">&#9906;</span>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="card-columns">
+            <?php
+            echo $list->toHTML();
+            ?>
+        </div>
     </div>
 
     <footer class="py-5 bg-dark mt-4">
