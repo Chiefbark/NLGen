@@ -1,22 +1,22 @@
 <?php
 
-class Post{
+class Post
+{
     private $id;
     private $title;
     private $author;
     private $photo;
     private $content;
 
-    public function __construct($id='',$title='',$author='',$photo='',$content='') {
-        $this->id = $id;
-        $this->title = $title;
-        $this->author = $author;
-        $this->photo = $photo;
-        $this->content = $content;
-    }
-
-
-    public function fill($title,$author,$photo,$content, $id = '')
+    /**
+     * Constructor of the Post
+     * @param $id The id of the Post
+     * @param $title The title of the Post
+     * @param $author The author of the Post
+     * @param $photo The photo of the Post
+     * @param $content The content of the Post
+     */
+    public function __construct($id = '', $title = '', $author = '', $photo = '', $content = '')
     {
         $this->id = $id;
         $this->title = $title;
@@ -25,47 +25,71 @@ class Post{
         $this->content = $content;
     }
 
+    /**
+     * Fills the Post
+     * @param $title The title of the Post
+     * @param $author The author of the Post
+     * @param $photo The photo of the Post
+     * @param $content The content of the Post 
+     * @param $id The id of the Post
+     */
+    public function fill($title, $author, $photo, $content, $id = '')
+    {
+        $this->id = $id;
+        $this->title = $title;
+        $this->author = $author;
+        $this->photo = $photo;
+        $this->content = $content;
+    }
 
-
-    public static function insert($post){
+    /**
+     * Inserts a new Post into the database
+     * @param post The Post to insert
+     */
+    public static function insert($post)
+    {
         return DAOPost::getInstance()->insert($post);
     }
 
-
-
-    public function setAuthor($author)
-    {
-        $this->author = $author;
-    }
-
-
-
     /**
-     * @return string
+     * Selects a Post from the database
+     * @param id The id of the Post to select
      */
-    public function getAuthor()
+    public static function selectById($id)
     {
-        return $this->author;
+        return DAOPost::getInstance()->selectById($id);
     }
 
     /**
-     * @param string $content
+     * Updates a Post of the database
+     * @param post The Post to update
      */
-    public function setContent($content)
+    public static function update($post)
     {
-        $this->content = $content;
+        DAOPost::getInstance()->update($post);
     }
 
     /**
-     * @return string
+     * Deletes a Post from the database
+     * @param post The Post to delete
      */
-    public function getContent()
+    public static function delete($post)
     {
-        return $this->content;
+        DAOPost::getInstance()->delete($post);
     }
 
     /**
-     * @param string $id
+     * Returns the id of the Post
+     * @return id The id of the Post
+     */
+    public function getId($id)
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * Sets the id of the Post
+     * @param id The id of the Post
      */
     public function setId($id)
     {
@@ -73,31 +97,17 @@ class Post{
     }
 
     /**
-     * @return string
+     * Returns the title of the Post
+     * @return title The title of the Post
      */
-    public function getId()
+    public function getTitle()
     {
-        return $this->id;
+        return $this->title;
     }
 
     /**
-     * @param string $photo
-     */
-    public function setPhoto($photo)
-    {
-        $this->photo = $photo;
-    }
-
-    /**
-     * @return string
-     */
-    public function getPhoto()
-    {
-        return $this->photo;
-    }
-
-    /**
-     * @param string $title
+     * Sets the title of the Post
+     * @param title The title of the Post
      */
     public function setTitle($title)
     {
@@ -105,15 +115,56 @@ class Post{
     }
 
     /**
-     * @return string
+     * Returns the author of the Post
+     * @return author The author of the Post
      */
-    public function getTitle()
+    public function getAuthor()
     {
-        return $this->title;
+        return $this->author;
     }
-    
 
+    /**
+     * Sets the author of the Post
+     * @param author The author of the Post
+     */
+    public function setAuthor($author)
+    {
+        $this->author = $author;
+    }
+
+    /**
+     * Returns the photo of the Post
+     * @return photo The photo of the Post
+     */
+    public function getPhoto()
+    {
+        return $this->photo;
+    }
+
+    /**
+     * Sets the photo of the Post
+     * @param photo The photo of the Post
+     */
+    public function setPhoto($photo)
+    {
+        $this->photo = $photo;
+    }
+
+    /**
+     * Returns the content of the Post
+     * @return content The content of the Post
+     */
+    public function getContent()
+    {
+        return $this->content;
+    }
+
+    /**
+     * Sets the content of the Post
+     * @param content The content of the Post
+     */
+    public function setContent($content)
+    {
+        $this->content = $content;
+    }
 }
-
-
-?>
