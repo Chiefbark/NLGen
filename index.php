@@ -7,7 +7,8 @@ require_once "assets/BackEnd/DBConn.php";
 require_once "assets/BackEnd/Post.php";
 require_once "assets/BackEnd/DAOPost.php";
 
-$list = DAOPost::getInstance()->select();
+$list = PostList::select()->getList();
+
 
 ?>
 <!DOCTYPE html>
