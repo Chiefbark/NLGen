@@ -11,11 +11,12 @@ class Post
 
     /**
      * Constructor of the Post
-     * @param $id The id of the Post
-     * @param $title The title of the Post
-     * @param $author The author of the Post
-     * @param $photo The photo of the Post
-     * @param $content The content of the Post
+     * @param id The id of the Post
+     * @param title The title of the Post
+     * @param author The author of the Post
+     * @param photo The photo of the Post
+     * @param content The content of the Post
+     * @param timestamp The date when the Post was created
      */
     public function __construct($id = '', $title = '', $author = '', $photo = '', $content = '', $timestamp = '')
     {
@@ -29,19 +30,21 @@ class Post
 
     /**
      * Fills the Post
-     * @param $title The title of the Post
-     * @param $author The author of the Post
-     * @param $photo The photo of the Post
-     * @param $content The content of the Post 
-     * @param $id The id of the Post
+     * @param title The title of the Post
+     * @param author The author of the Post
+     * @param photo The photo of the Post
+     * @param content The content of the Post 
+     * @param timestamp The date when the Post was created
+     * @param id The id of the Post
      */
-    public function fill($title, $author, $photo, $content, $id = '')
+    public function fill($title, $author, $photo, $content, $timestamp, $id = '')
     {
         $this->id = $id;
         $this->title = $title;
         $this->author = $author;
         $this->photo = $photo;
         $this->content = $content;
+        $this->timestamp = $timestamp;
     }
 
     /**
@@ -50,7 +53,6 @@ class Post
      */
     public static function insert($post)
     {
-        $this->timestamp = time();
         return DAOPost::getInstance()->insert($post);
     }
 
@@ -177,7 +179,7 @@ class Post
      */
     public function getTimeStamp()
     {
-        return $this->timeStamp;
+        return $this->timestamp;
     }
 
     /**
@@ -187,5 +189,14 @@ class Post
     public function setTimeStamp($timestamp)
     {
         $this->timestamp = $timestamp;
+    }
+
+    /**
+     * Returns the timestamp formatted
+     * @return date The timestamp formatted
+     */
+    public function getTimeFormated()
+    {
+        return date("F d, Y h:i:s A", $this->timestamp);
     }
 }
