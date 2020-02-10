@@ -30,8 +30,8 @@ class DAOPost
         $temp = array(
             'title' => addslashes($post->getTitle()),
             'author' => addslashes($post->getAuthor()),
-            'photo' => addslashes($post->getPhoto()),
-            'content' => addslashes($post->getContent()),
+            'photo' => $post->getPhoto(),
+            'content' => $post->getContent(),
             'timestamp' => addslashes($post->getTimeStamp())
         );
         $id = $bulk->insert($temp);
