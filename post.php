@@ -55,7 +55,7 @@ else
                     by <?php echo $post->getAuthor(); ?>
                 </p>
                 <hr>
-                <p>Posted on <?php echo $post->getTimeFormated(); ?></p>
+                <p>Posted on <?php echo $post->getFullTime(); ?></p>
                 <hr>
                 <img class="img-fluid rounded" src="<?php echo $post->getPhoto(); ?>" alt="">
                 <hr>
