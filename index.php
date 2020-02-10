@@ -71,7 +71,7 @@ $list = PostList::select();
                 </div>
             </div>
         </div>
-        <div class="card-columns">
+        <div class="card-columns py-2">
             <?php
             echo $list->toHTML();
             ?>
