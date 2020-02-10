@@ -28,11 +28,11 @@ class DAOPost
     {
         $bulk = new MongoDB\Driver\BulkWrite;
         $temp = array(
-            'title' => $post->getTitle(),
-            'author' => $post->getAuthor(),
-            'photo' => $post->getPhoto(),
-            'content' => $post->getContent(),
-            'timestamp' => $post->getTimeStamp()
+            'title' => addslashes($post->getTitle()),
+            'author' => addslashes($post->getAuthor()),
+            'photo' => addslashes($post->getPhoto()),
+            'content' => addslashes($post->getContent()),
+            'timestamp' => addslashes($post->getTimeStamp())
         );
         $id = $bulk->insert($temp);
         $this->conn->executeBulkWrite('NLGen.post', $bulk);
