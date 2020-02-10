@@ -40,6 +40,10 @@ class PostList
         $this->list = $list;
     }
 
+    /**
+     * Returns the html template of the Posts
+     * @return html The html template of the Posts
+     */
     public function toHTML()
     {
         $str  = '';
@@ -259,10 +263,14 @@ class Post
         return date("F d, Y", $this->timestamp);
     }
 
+    /**
+     * Returns the html template of the Post
+     * @return html The html template of the Post
+     */
     public function toHTML()
     {
         $str = '';
-        $str .= '<a href="post.php?id=' . $this->getId() . '" class="card">';
+        $str .= '<a href="post.php?id=' . $this->getId() . '" class="card" title="' . strtolower($this->getTitle()) . '">';
         $str .= '<img class="card-img-top" src="' . $this->getPhoto() . '" alt="Card image cap">';
         $str .= '<div class="card-body text-dark">';
         $str .= '<h4 class="card-title">' . $this->getTitle() . '</h4>';
