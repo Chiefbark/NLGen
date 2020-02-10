@@ -29,5 +29,5 @@ a.card:hover {
 }
 
 .hidden {
-  display: none;
+  display: none !important;
 }
