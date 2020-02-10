@@ -14,7 +14,7 @@ class Post
      * @param id The id of the Post
      * @param title The title of the Post
      * @param author The author of the Post
-     * @param photo The photo of the Post
+     * @param photo The photo path of the Post
      * @param content The content of the Post
      * @param timestamp The date when the Post was created
      */
@@ -23,8 +23,8 @@ class Post
         $this->id = $id;
         $this->title = $title;
         $this->author = $author;
-        $this->photo = $photo;
         $this->content = $content;
+        $this->photo = $photo;
         $this->timestamp = $timestamp;
     }
 
@@ -32,17 +32,15 @@ class Post
      * Fills the Post
      * @param title The title of the Post
      * @param author The author of the Post
-     * @param photo The photo of the Post
      * @param content The content of the Post 
      * @param timestamp The date when the Post was created
      * @param id The id of the Post
      */
-    public function fill($title, $author, $photo, $content, $timestamp, $id = '')
+    public function fill($title, $author, $content, $timestamp, $id = '')
     {
         $this->id = $id;
         $this->title = $title;
         $this->author = $author;
-        $this->photo = $photo;
         $this->content = $content;
         $this->timestamp = $timestamp;
     }
@@ -51,9 +49,16 @@ class Post
      * Inserts a new Post into the database
      * @param post The Post to insert
      */
-    public static function insert($post)
+    public static function insert($post, $file)
     {
-        return DAOPost::getInstance()->insert($post);
+        $newPath = false;
+        $name = 'assets/files/' . time() . Post::clear_special_chars($file['name']);
+        if (move_uploaded_file($file['tmp_name'], $name)) {
+            echo 'dsfafdasdfadf';
+            $newPath = $name;
+            $post->setPhoto($newPath);
+            return DAOPost::getInstance()->insert($post);
+        }
     }
 
     /**
@@ -198,5 +203,24 @@ class Post
     public function getTimeFormated()
     {
         return date("F d, Y h:i:s A", $this->timestamp);
+    }
+
+    public static function clear_special_chars($str)
+    {
+        $str = str_replace("[áàâãªä@]", "a", $str);
+        $str = str_replace("[ÁÀÂÃÄ]", "A", $str);
+        $str = str_replace("[éèêë]", "e", $str);
+        $str = str_replace("[ÉÈÊË]", "E", $str);
+        $str = str_replace("[íìîï]", "i", $str);
+        $str = str_replace("[ÍÌÎÏ]", "I", $str);
+        $str = str_replace("[óòôõºö]", "o", $str);
+        $str = str_replace("[ÓÒÔÕÖ]", "O", $str);
+        $str = str_replace("[úùûü]", "u", $str);
+        $str = str_replace("[ÚÙÛÜ]", "U", $str);
+        $str = str_replace("[¿?\]", "_", $str);
+        $str = str_replace(" ", "_", $str);
+        $str = str_replace("ñ", "n", $str);
+        $str = str_replace("Ñ", "N", $str);
+        return $str;
     }
 }
