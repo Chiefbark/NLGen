@@ -1,5 +1,46 @@
 <?php
 
+class PostList
+{
+    private $list;
+
+    /**
+     * Constructor of the PostList
+     * @param list The initial list of Posts
+     */
+    public function __construct($list = [])
+    {
+        $this->list = $list;
+    }
+
+    /**
+     * Selects all the Posts from the database
+     * @return PostList The list of the Posts
+     */
+    public static function select()
+    {
+        return new PostList(DAOPost::getInstance()->select());
+    }
+
+    /**
+     * Returns the list of Posts
+     * @return list The list of Posts
+     */
+    public function getList()
+    {
+        return $this->list;
+    }
+
+    /**
+     * Sets the list of Posts
+     * @param list The list of Posts
+     */
+    public function setList($list)
+    {
+        $this->list = $list;
+    }
+}
+
 class Post
 {
     private $id;
