@@ -39,6 +39,14 @@ class PostList
     {
         $this->list = $list;
     }
+
+    public function toHTML()
+    {
+        $str  = '';
+        foreach ($this->list as $row)
+            $str .= $row->toHTML();
+        return $str;
+    }
 }
 
 class Post
@@ -133,9 +141,9 @@ class Post
      * Returns the id of the Post
      * @return id The id of the Post
      */
-    public function getId($id)
+    public function getId()
     {
-        $this->id = $id;
+        return $this->id;
     }
 
     /**
@@ -241,9 +249,28 @@ class Post
      * Returns the timestamp formatted
      * @return date The timestamp formatted
      */
-    public function getTimeFormated()
+    public function getFullTime()
     {
         return date("F d, Y h:i:s A", $this->timestamp);
+    }
+
+    public function getDateTime()
+    {
+        return date("F d, Y", $this->timestamp);
+    }
+
+    public function toHTML()
+    {
+        $str = '';
+        $str .= '<a href="post.php?id=' . $this->getId() . '" class="card">';
+        $str .= '<img class="card-img-top" src="' . $this->getPhoto() . '" alt="Card image cap">';
+        $str .= '<div class="card-body text-dark">';
+        $str .= '<h4 class="card-title">' . $this->getTitle() . '</h4>';
+        $str .= '<p class="card-text text-right">' . $this->getAuthor() . '</p>';
+        $str .= '<p class="card-text text-right"><small class="text-muted">' . $this->getDateTime() . '</small></p>';
+        $str .= '</div>';
+        $str .= '</a>';
+        return $str;
     }
 
     public static function clear_special_chars($str)
