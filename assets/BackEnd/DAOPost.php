@@ -34,7 +34,8 @@ class DAOPost
             'title' => $post->getTitle(),
             'author' => $post->getAuthor(),
             'photo' => $post->getPhoto(),
-            'content' => $post->getContent()
+            'content' => $post->getContent(),
+            'timestamp' => $post->getTimeStamp()
         );
         $id = $bulk->insert($temp);
         $this->conn->executeBulkWrite('NLGen.post', $bulk);
@@ -52,7 +53,7 @@ class DAOPost
         $rows = $this->conn->executeQuery("NLGen.post", $query);
         $collection = array();
         foreach ($rows as $row) {
-            $node = new Post($row->_id, $row->title, $row->author, $row->photo, $row->content);
+            $node = new Post($row->_id, $row->title, $row->author, $row->photo, $row->content, $row->timestamp);
             array_push($collection, $node);
         }
         return $collection;
@@ -69,7 +70,7 @@ class DAOPost
         $rows = $this->conn->executeQuery("NLGen.post", $query);
         $collection = array();
         foreach ($rows as $row) {
-            $node = new Post($row->_id, $row->title, $row->author, $row->photo, $row->content);
+            $node = new Post($row->_id, $row->title, $row->author, $row->photo, $row->content, $row->timestamp);
             array_push($collection, $node);
         }
         return $collection[0];
@@ -87,7 +88,8 @@ class DAOPost
             'title' => $post->getTitle(),
             'author' => $post->getAuthor(),
             'photo' => $post->getPhoto(),
-            'content' => $post->getContent()
+            'content' => $post->getContent(),
+            'timestamp' => $post->getTimeStamp()
         ]];
         $bulk->update($filter, $new);
         $this->conn->executeBulkWrite('NLGen.post', $bulk);
