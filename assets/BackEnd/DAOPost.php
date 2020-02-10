@@ -1,8 +1,5 @@
 <?php
 
-require_once 'DBConn.php';
-require_once 'Post.php';
-
 class DAOPost
 {
     protected $conn;
