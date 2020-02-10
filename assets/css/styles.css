@@ -13,12 +13,10 @@ body {
 
 a.card {
   text-decoration: none;
-  transition     : all .15s;
 }
 
 a.card:hover {
   text-decoration: none;
-  box-shadow     : 0 0 10px 1px lightgrey;
 }
 
 #search-icon {
