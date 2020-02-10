@@ -27,3 +27,7 @@ a.card:hover {
   -o-transform     : rotate(-45deg);
   transform        : rotate(-45deg);
 }
+
+.hidden {
+  display: none;
+}
