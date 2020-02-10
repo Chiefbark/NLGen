@@ -10,3 +10,20 @@ body {
 .flex-grow {
   flex: 1;
 }
+
+a.card {
+  text-decoration: none;
+  transition     : all .15s;
+}
+
+a.card:hover {
+  text-decoration: none;
+  box-shadow     : 0 0 10px 1px lightgrey;
+}
+
+#search-icon {
+  -webkit-transform: rotate(-45deg);
+  -moz-transform   : rotate(-45deg);
+  -o-transform     : rotate(-45deg);
+  transform        : rotate(-45deg);
+}
