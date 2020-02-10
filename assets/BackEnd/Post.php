@@ -7,6 +7,7 @@ class Post
     private $author;
     private $photo;
     private $content;
+    private $timestamp;
 
     /**
      * Constructor of the Post
@@ -16,13 +17,14 @@ class Post
      * @param $photo The photo of the Post
      * @param $content The content of the Post
      */
-    public function __construct($id = '', $title = '', $author = '', $photo = '', $content = '')
+    public function __construct($id = '', $title = '', $author = '', $photo = '', $content = '', $timestamp = '')
     {
         $this->id = $id;
         $this->title = $title;
         $this->author = $author;
         $this->photo = $photo;
         $this->content = $content;
+        $this->timestamp = $timestamp;
     }
 
     /**
@@ -48,6 +50,7 @@ class Post
      */
     public static function insert($post)
     {
+        $this->timestamp = time();
         return DAOPost::getInstance()->insert($post);
     }
 
@@ -166,5 +169,23 @@ class Post
     public function setContent($content)
     {
         $this->content = $content;
+    }
+
+    /**
+     * Returns the timestamp of the Post
+     * @return timeStamp The timestamp of the Post
+     */
+    public function getTimeStamp()
+    {
+        return $this->timeStamp;
+    }
+
+    /**
+     * Sets the timestamp of the Post
+     * @param timeStamp The timeStamp of the Post
+     */
+    public function setTimeStamp($timestamp)
+    {
+        $this->timestamp = $timestamp;
     }
 }
