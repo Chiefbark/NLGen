@@ -51,6 +51,32 @@ class PostList
             $str .= $row->toHTML();
         return $str;
     }
+
+    /**
+     * Returns the xml format of the Posts
+     * @return xml The xml format of the Posts
+     */
+    public function toXML()
+    {
+        $str  = '<root>';
+        foreach ($this->list as $row)
+            $str .= $row->toXML();
+        $str  = '</root>';
+        return $str;
+    }
+
+    /**
+     * Returns the json format of the Posts
+     * @return json The json format of the Posts
+     */
+    public function toJSON()
+    {
+        $str  = '[';
+        foreach ($this->list as $row)
+            $str .= $row->toJSON();
+        $str  = ']';
+        return $str;
+    }
 }
 
 class Post
@@ -278,6 +304,40 @@ class Post
         $str .= '<p class="card-text text-right"><small class="text-muted">' . $this->getDateTime() . '</small></p>';
         $str .= '</div>';
         $str .= '</a>';
+        return $str;
+    }
+
+    /**
+     * Returns the xml format of the Post
+     * @return xml The xml format of the Post
+     */
+    public function toXML()
+    {
+        $str = '';
+        $str .= '<post id="' . $this->id . '" timestamp ="' . $this->timestamp . '">';
+        $str .= '<title>' . $this->title . '</title>';
+        $str .= '<author>' . $this->title . '</author>';
+        $str .= '<photo>' . $this->photo . '</photo>';
+        $str .= '<content>' . $this->content . '</content>';
+        $str .= '</post>';
+        return $str;
+    }
+
+    /**
+     * Returns the json format of the Post
+     * @return json The json format of the Post
+     */
+    public function toJSON()
+    {
+        $str = '';
+        $str .= 'post:{';
+        $str .= 'id:"' . $this->id . '",';
+        $str .= 'timestamp:"' . $this->timestamp . '",';
+        $str .= 'title:"' . $this->title . '",';
+        $str .= 'author:"' . $this->title . '",';
+        $str .= 'photo:"' . $this->photo . '",';
+        $str .= 'content:"' . $this->content . '"';
+        $str .= '}';
         return $str;
     }
 
