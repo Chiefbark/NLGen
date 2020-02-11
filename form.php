@@ -8,6 +8,11 @@ $post = new Post();
 if (isset($_POST) && !empty($_POST)) {
     $post->fill($_POST['title'], $_POST['author'], $_POST['content'], time());
     $id = Post::insert($post, $_FILES['photo']);
+
+    $list = PostList::select();
+    file_put_contents('assets/files/posts.xml', $list->toXML());
+    file_put_contents('assets/files/posts.json', $list->toJSON());
+
     header("location: post.php?id=$id");
 }
 ?>
