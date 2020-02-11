@@ -29,3 +29,7 @@ a.card:hover {
 .hidden {
   display: none !important;
 }
+
+.dropdown-toggle:focus~.dropdown-menu {
+  display: block !important;
+}
