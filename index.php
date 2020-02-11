@@ -63,6 +63,7 @@ $list = PostList::select();
         <div class="row">
             <h3 class="col-md-8">Browse over all our posts</h3>
             <div class="input-group mb-3 col-md-4">
+                <a href="form.php" class="btn btn-dark mr-3">&#x002B</a>
                 <input type="text" class="form-control" id="search-field" placeholder="Search..." aria-label="name" onkeyup="filterPosts()">
                 <div class="input-group-append">
                     <span class="input-group-text">
