@@ -58,10 +58,10 @@ class PostList
      */
     public function toXML()
     {
-        $str  = '<root>';
+        $str = '<root>';
         foreach ($this->list as $row)
             $str .= $row->toXML();
-        $str  = '</root>';
+        $str .= '</root>';
         return $str;
     }
 
@@ -74,7 +74,7 @@ class PostList
         $str  = '[';
         foreach ($this->list as $row)
             $str .= $row->toJSON();
-        $str  = ']';
+        $str  .= ']';
         return $str;
     }
 }
@@ -133,7 +133,6 @@ class Post
         $newPath = false;
         $name = 'assets/files/' . time() . Post::clear_special_chars($file['name']);
         if (move_uploaded_file($file['tmp_name'], $name)) {
-            echo 'dsfafdasdfadf';
             $newPath = $name;
             $post->setPhoto($newPath);
             return DAOPost::getInstance()->insert($post);
@@ -318,7 +317,7 @@ class Post
         $str .= '<title>' . $this->title . '</title>';
         $str .= '<author>' . $this->title . '</author>';
         $str .= '<photo>' . $this->photo . '</photo>';
-        $str .= '<content>' . $this->content . '</content>';
+        $str .= '<content><![CDATA[' . $this->content . ']]></content>';
         $str .= '</post>';
         return $str;
     }
@@ -330,13 +329,13 @@ class Post
     public function toJSON()
     {
         $str = '';
-        $str .= 'post:{';
-        $str .= 'id:"' . $this->id . '",';
-        $str .= 'timestamp:"' . $this->timestamp . '",';
-        $str .= 'title:"' . $this->title . '",';
-        $str .= 'author:"' . $this->title . '",';
-        $str .= 'photo:"' . $this->photo . '",';
-        $str .= 'content:"' . $this->content . '"';
+        $str .= '"post":{';
+        $str .= '"id":"' . $this->id . '",';
+        $str .= '"timestamp":"' . $this->timestamp . '",';
+        $str .= '"title":"' . $this->title . '",';
+        $str .= '"author":"' . $this->title . '",';
+        $str .= '"photo":"' . $this->photo . '",';
+        $str .= '"content":"' . $this->content . '"';
         $str .= '}';
         return $str;
     }
