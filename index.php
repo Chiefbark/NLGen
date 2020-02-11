@@ -1,8 +1,4 @@
 <?php
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-
 require_once "assets/BackEnd/DBConn.php";
 require_once "assets/BackEnd/Post.php";
 require_once "assets/BackEnd/DAOPost.php";
@@ -30,39 +26,45 @@ $list = PostList::select();
                 for (var item of items)
                     item.classList.add('hidden');
         }
+
+        function toggleDropdown(elem) {
+            if (elem.nextElementSibling.style.display != 'block')
+                elem.nextElementSibling.style.display = 'block';
+            else
+                elem.nextElementSibling.style.display = '';
+        }
+
+        function resetDropdowns() {
+            if (!event.target.classList.contains('dropdown-menu') && !event.target.parentNode.classList.contains('dropdown-toggle') && !event.target.classList.contains('dropdown-toggle')) {
+                var items = document.getElementsByClassName('dropdown-menu');
+                for (elem of items)
+                    elem.style.display = '';
+            }
+        }
     </script>
 
     <link href="assets/css/bootstrap.min.css" rel="stylesheet">
     <link href="assets/css/styles.css" rel="stylesheet">
 </head>
 
-<body class="d-flex flex-column">
+<body class="d-flex flex-column" onclick="resetDropdowns()">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div class="container">
             <a class="navbar-brand" href="index.php">NLGen</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="index.php">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="about.php">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="subscribe.php">Subscribe</a>
-                    </li>
-                </ul>
-            </div>
         </div>
     </nav>
 
     <div class="container flex-grow">
         <div class="row">
-            <h3 class="col-md-8">Browse over all our posts</h3>
-            <div class="input-group mb-3 col-md-4">
+            <h3 class="col-md-7">Browse over all our posts</h3>
+            <div class="input-group mb-3 col-md-5">
+                <div class="dropdown">
+                    <button class="btn btn-dark dropdown-toggle mr-3" onclick="toggleDropdown(this)"><span class="pr-3">Download</span></button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                        <a class="dropdown-item" href="assets/files/posts.xml" download="posts.xml">xml</a>
+                        <a class="dropdown-item" href="assets/files/posts.json" download="posts.json">json</a>
+                    </div>
+                </div>
                 <a href="form.php" class="btn btn-dark mr-3">&#x002B</a>
                 <input type="text" class="form-control" id="search-field" placeholder="Search..." aria-label="name" onkeyup="filterPosts()">
                 <div class="input-group-append">
