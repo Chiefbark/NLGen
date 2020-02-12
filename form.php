@@ -15,6 +15,8 @@ if (isset($_POST) && !empty($_POST)) {
 
     header("location: post.php?id=$id");
 }
+if (!$post)
+    header('location: index.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
