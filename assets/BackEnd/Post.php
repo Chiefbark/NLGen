@@ -295,7 +295,8 @@ class Post
     public function toHTML()
     {
         $str = '';
-        $str .= '<a href="post.php?id=' . $this->getId() . '" class="card" title="' . strtolower($this->getTitle()) . '">';
+        $str .= '<a href="post.php?id=' . $this->getId() . '" class="card" title="' . strtolower($this->getTitle()) . '" id="' . $this->getId() . '">';
+        $str .= '<span class="bg-success text-white rounded-circle">&#x2713;</span>';
         $str .= '<img class="card-img-top" src="' . $this->getPhoto() . '" alt="Card image cap">';
         $str .= '<div class="card-body text-dark">';
         $str .= '<h4 class="card-title">' . $this->getTitle() . '</h4>';
