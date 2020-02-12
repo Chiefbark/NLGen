@@ -11,6 +11,6 @@ class DBConn
 
     public static function getConnection()
     {
-        return new MongoDB\Driver\Manager("mongodb://" . DBConn::$user . ':' . DBConn::$password . '@' . DBConn::$host);
+        return new MongoDB\Driver\Manager("mongodb+srv://admin:admin@cluster0-3lan4.mongodb.net/test?retryWrites=true&w=majority");
     }
 }
