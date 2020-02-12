@@ -54,8 +54,9 @@ $list = PostList::select();
             var items = document.querySelectorAll('.card');
             for (var item of items) {
                 if (item.href == 'javascript:void(0)') {
-                    item.href = 'post.php?id="' + elem.id + '"';
+                    item.href = 'post.php?id=' + item.id + '';
                     item.removeAttribute('onclick');
+                    item.classList.remove('active');
                 } else {
                     item.href = "javascript:void(0)";
                     item.setAttribute('onclick', 'onPostClicked(this)');
@@ -67,6 +68,7 @@ $list = PostList::select();
             } else {
                 toolbar.classList.add('d-none');
                 toolbar.classList.remove('d-flex');
+                document.getElementById('newsletter').innerHTML = '';
             }
         }
 
