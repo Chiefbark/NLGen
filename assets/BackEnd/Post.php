@@ -316,7 +316,7 @@ class Post
         $str = '';
         $str .= '<post id="' . $this->id . '" timestamp ="' . $this->timestamp . '">';
         $str .= '<title>' . $this->title . '</title>';
-        $str .= '<author>' . $this->title . '</author>';
+        $str .= '<author>' . $this->author . '</author>';
         $str .= '<photo>' . $this->photo . '</photo>';
         $str .= '<content><![CDATA[' . $this->content . ']]></content>';
         $str .= '</post>';
@@ -334,7 +334,7 @@ class Post
         $str .= '"id":"' . $this->id . '",';
         $str .= '"timestamp":"' . $this->timestamp . '",';
         $str .= '"title":"' . $this->title . '",';
-        $str .= '"author":"' . $this->title . '",';
+        $str .= '"author":"' . $this->author . '",';
         $str .= '"photo":"' . $this->photo . '",';
         $str .= '"content":"' . $this->content . '"';
         $str .= '}';
