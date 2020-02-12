@@ -26,9 +26,14 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
 </head>
 
 <body class="d-flex flex-column">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-        <div class="container">
-            <a class="navbar-brand" href="index.php">NLGen</a>
+    <nav class="navbar navbar-expand navbar-dark bg-dark fixed-top">
+        <div class="container d-flex">
+            <div class="flex-grow-1">
+                <a class="navbar-brand" href="index.php">NLGen</a>
+            </div>
+            <div class="mr-auto">
+                <a href="newsletters.php" class="btn btn-link text-white text-decoration-none">Newsletters</a>
+            </div>
         </div>
     </nav>
 
