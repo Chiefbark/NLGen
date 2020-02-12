@@ -230,7 +230,7 @@ class Newsletter
      */
     public function toJSON()
     {
-        $str = 'newsletter:{';
+        $str = '"newsletter":{';
         $str .= '"id": "' . $this->id . '",';
         $str .= '"timestamp": "' . $this->timestamp . '",';
         $str .= '"postList:":{';
