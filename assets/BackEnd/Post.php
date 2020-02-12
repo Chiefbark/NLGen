@@ -283,6 +283,10 @@ class Post
         return date("F d, Y h:i:s A", $this->timestamp);
     }
 
+    /**
+     * Returns the timestamp formatted
+     * @return date The timestamp formatted
+     */
     public function getDateTime()
     {
         return date("F d, Y", $this->timestamp);
