@@ -8,7 +8,12 @@ require_once "assets/BackEnd/DAONewsletter.php";
 if (isset($_POST['post']) && !empty($_POST['post'])) {
     $newsletter = new Newsletter();
     $newsletter->fill(time(), $_POST['post']);
-    Newsletter::insert($newsletter);
+    $id = Newsletter::insert($newsletter);
+
+    file_put_contents('assets/files/newsletter' . $newsletter->getTimeStamp() . '.xml', $newsletter->toXML());
+    file_put_contents('assets/files/newsletter' . $newsletter->getTimeStamp() . '.json', $newsletter->toJSON());
+
+    header("location: newsletter.php?id=$id");
 }
 $list = PostList::select();
 
