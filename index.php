@@ -2,7 +2,14 @@
 require_once "assets/BackEnd/DBConn.php";
 require_once "assets/BackEnd/Post.php";
 require_once "assets/BackEnd/DAOPost.php";
+require_once "assets/BackEnd/Newsletter.php";
+require_once "assets/BackEnd/DAONewsletter.php";
 
+if (isset($_POST['post']) && !empty($_POST['post'])) {
+    $newsletter = new Newsletter();
+    $newsletter->fill(time(), $_POST['post']);
+    Newsletter::insert($newsletter);
+}
 $list = PostList::select();
 
 ?>
@@ -15,7 +22,7 @@ $list = PostList::select();
     <title>Home | NLGen</title>
 
     <script>
-        function filterPosts() {
+        function onFilterUpdated() {
             var value = document.getElementById('search-field').value.toLowerCase();
             var items = document.querySelectorAll('.card');
             for (var item of items)
@@ -27,19 +34,60 @@ $list = PostList::select();
                     item.classList.add('hidden');
         }
 
-        function toggleDropdown(elem) {
+        function onDropdownClicked(elem) {
             if (elem.nextElementSibling.style.display != 'block')
                 elem.nextElementSibling.style.display = 'block';
             else
                 elem.nextElementSibling.style.display = '';
         }
 
-        function resetDropdowns() {
+        function onBodyClicked() {
             if (!event.target.classList.contains('dropdown-menu') && !event.target.parentNode.classList.contains('dropdown-toggle') && !event.target.classList.contains('dropdown-toggle')) {
                 var items = document.getElementsByClassName('dropdown-menu');
                 for (elem of items)
                     elem.style.display = '';
             }
+        }
+
+        function onNewsletterClicked() {
+            var toolbar = document.getElementsByClassName('newsletter-toolbar')[0];
+            var items = document.querySelectorAll('.card');
+            for (var item of items) {
+                if (item.href == 'javascript:void(0)') {
+                    item.href = 'post.php?id="' + elem.id + '"';
+                    item.removeAttribute('onclick');
+                } else {
+                    item.href = "javascript:void(0)";
+                    item.setAttribute('onclick', 'onPostClicked(this)');
+                }
+            }
+            if (toolbar.classList.contains('d-none')) {
+                toolbar.classList.remove('d-none');
+                toolbar.classList.add('d-flex');
+            } else {
+                toolbar.classList.add('d-none');
+                toolbar.classList.remove('d-flex');
+            }
+        }
+
+        function onPostClicked(elem) {
+            var form = document.getElementById('newsletter');
+            if (elem.classList.contains('active')) {
+                elem.classList.remove('active');
+                form.removeChild(form.querySelector('input[value="' + elem.id + '"]'));
+            } else {
+                elem.classList.add('active');
+                var input = document.createElement('input');
+                input.type = 'hidden';
+                input.name = 'post[]';
+                input.setAttribute('value', elem.id);
+                form.appendChild(input);
+            }
+        }
+
+        function onCreateNewsletterCliked() {
+            var form = document.getElementById('newsletter');
+            form.submit();
         }
     </script>
 
@@ -47,7 +95,7 @@ $list = PostList::select();
     <link href="assets/css/styles.css" rel="stylesheet">
 </head>
 
-<body class="d-flex flex-column" onclick="resetDropdowns()">
+<body class="d-flex flex-column" onclick="onBodyClicked()">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div class="container">
             <a class="navbar-brand" href="index.php">NLGen</a>
@@ -59,19 +107,23 @@ $list = PostList::select();
             <h3 class="col-md-7">Browse over all our posts</h3>
             <div class="input-group mb-3 col-md-5">
                 <div class="dropdown">
-                    <button class="btn btn-dark dropdown-toggle mr-3" onclick="toggleDropdown(this)"><span class="pr-3">Download</span></button>
+                    <button class="btn btn-dark dropdown-toggle mr-3" onclick="onDropdownClicked(this)"><span class="pr-3">New</span></button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                        <a class="dropdown-item" href="assets/files/posts.xml" download="posts.xml">xml</a>
-                        <a class="dropdown-item" href="assets/files/posts.json" download="posts.json">json</a>
+                        <a class="dropdown-item" href="javascript:onNewsletterClicked()">Newsletter</a>
+                        <a class="dropdown-item" href="form.php">Post</a>
                     </div>
                 </div>
-                <a href="form.php" class="btn btn-dark mr-3">&#x002B</a>
-                <input type="text" class="form-control" id="search-field" placeholder="Search..." aria-label="name" onkeyup="filterPosts()">
+                <input type="text" class="form-control" id="search-field" placeholder="Search..." aria-label="name" onkeyup="onFilterUpdated()">
                 <div class="input-group-append">
                     <span class="input-group-text">
                         <span id="search-icon">&#9906;</span>
                     </span>
                 </div>
+            </div>
+            <div class="d-none w-100 align-items-center my-3 d-none newsletter-toolbar">
+                <span class="flex-grow-1 ml-3 text-muted w-100">Select the posts of the newsletter</span>
+                <a href="javascript:onNewsletterClicked()" class="btn btn-outline-dark">Cancel</a>
+                <a href="javascript:onCreateNewsletterCliked()" class="btn btn-dark mx-3">Create</a>
             </div>
         </div>
         <div class="card-columns py-2">
@@ -86,6 +138,8 @@ $list = PostList::select();
             <p class="m-0 text-center text-white">Copyright &copy; NLGen 2020</p>
         </div>
     </footer>
+    <form action="index.php" method="POST" class="d-none" id="newsletter">
+    </form>
 
 </body>
 
