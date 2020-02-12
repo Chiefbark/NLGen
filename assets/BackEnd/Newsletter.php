@@ -74,6 +74,33 @@ class Newsletter
     }
 
     /**
+     * Selects a Newsletter from the database
+     * @param id The id of the Newsletter to select
+     */
+    public static function selectById($id)
+    {
+        return DAONewsletter::getInstance()->selectById($id);
+    }
+
+    /**
+     * Updates a Newsletter of the database
+     * @param post The Newsletter to update
+     */
+    public static function update($post)
+    {
+        DAONewsletter::getInstance()->update($post);
+    }
+
+    /**
+     * Deletes a Newsletter from the database
+     * @param post The Newsletter to delete
+     */
+    public static function delete($post)
+    {
+        DAONewsletter::getInstance()->delete($post);
+    }
+
+    /**
      * Returns the id of the Newsletter
      * @return id The id of the Newsletter
      */
@@ -139,5 +166,31 @@ class Newsletter
     public function getDateTime()
     {
         return date("F d, Y", $this->timestamp);
+    }
+
+    public function toXML()
+    {
+        $str = '<newsletter id="' . $this->id . '" timestamp="' . $this->timestamp . '">';
+        foreach ($this->postList as $id) {
+            $post = Post::selectById($id);
+            $str .= $post->toXML();
+        }
+        $str .= '</newsletter>';
+        return $str;
+    }
+
+    public function toJSON()
+    {
+        $str = 'newsletter:{';
+        $str .= '"id": "' . $this->id . '",';
+        $str .= '"timestamp": "' . $this->timestamp . '",';
+        $str .= '"postList:":{';
+        foreach ($this->postList as $id) {
+            $post = Post::selectById($id);
+            $str .= $post->toJSON();
+        }
+        $str .= '}';
+        $str .= '}';
+        return $str;
     }
 }
