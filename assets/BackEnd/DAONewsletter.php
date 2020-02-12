@@ -47,7 +47,7 @@ class DAONewsletter
         $rows = $this->conn->executeQuery("NLGen.newsletter", $query);
         $collection = array();
         foreach ($rows as $row) {
-            $node = new Newsletter($row->_id, $row->title, $row->author, $row->photo, $row->content, $row->timestamp);
+            $node = new Newsletter($row->_id, $row->timestamp, $row->postList);
             array_push($collection, $node);
         }
         return $collection;
