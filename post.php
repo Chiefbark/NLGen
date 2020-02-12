@@ -5,9 +5,11 @@ require_once "assets/BackEnd/DAOPost.php";
 
 $post = new Post();
 
-if (isset($_GET['id']) && !empty($_GET['id']))
+if (isset($_GET['id']) && !empty($_GET['id'])) {
     $post = Post::selectById($_GET['id']);
-else
+    if (!$post)
+        header('location: index.php');
+} else
     header('location: index.php');
 
 ?>
