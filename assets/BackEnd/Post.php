@@ -321,7 +321,7 @@ class Post
         $str .= '<post id="' . $this->id . '" timestamp ="' . $this->timestamp . '">';
         $str .= '<title>' . $this->title . '</title>';
         $str .= '<author>' . $this->author . '</author>';
-        $str .= '<photo>' . $this->photo . '</photo>';
+        $str .= '<photo>' . $_SERVER['PHP_SELF'] . '/' . $this->photo . '</photo>';
         $str .= '<content><![CDATA[' . $this->content . ']]></content>';
         $str .= '</post>';
         return $str;
@@ -339,7 +339,7 @@ class Post
         $str .= '"timestamp":"' . $this->timestamp . '",';
         $str .= '"title":"' . $this->title . '",';
         $str .= '"author":"' . $this->author . '",';
-        $str .= '"photo":"' . $this->photo . '",';
+        $str .= '"photo":"' . $_SERVER['PHP_SELF'] . '/' . $this->photo . '",';
         $str .= '"content":"' . $this->content . '"';
         $str .= '}';
         return $str;
